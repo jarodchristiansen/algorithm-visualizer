@@ -1,7 +1,13 @@
 import React from "react";
 
 // Size list component
-const Size = ({ onChange, lengths }) => {
+
+interface SizeProps {
+  onChange: (value: string, speed: string) => void;
+  lengths: number[];
+}
+
+const Size = ({ onChange, lengths }: SizeProps) => {
   return (
     <span className="options">
       <select

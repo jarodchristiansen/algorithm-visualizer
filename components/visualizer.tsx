@@ -25,7 +25,7 @@ import {
   NORMAL,
   DONE,
 } from "./helper/constants";
-import { getKeysCopy } from "./helper/keys.js";
+import { getKeysCopy } from "./helper/keys";
 
 const Visualizer = () => {
   /*  each element in the list contains a <key, classType> where:
@@ -33,7 +33,7 @@ const Visualizer = () => {
         classType - css class for changing color of element
     */
 
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<{ key: number; classType: number }[]>([]);
   const [size, setSize] = useState(10);
   const [speed, setSpeed] = useState(1);
   const [algorithm, setAlgorithm] = useState(1);
@@ -45,7 +45,7 @@ const Visualizer = () => {
 
   // for updating the state on changing navbar options
   // avoid changing algorithm and size when algorithm is running
-  const onChange = (value, option) => {
+  const onChange = (value?: number, option?: string) => {
     if (option === ALGORITHM && !running) {
       //   this.setState({ algorithm: Number(value) });
       setAlgorithm(Number(value));
@@ -78,7 +78,7 @@ const Visualizer = () => {
   };
 
   // get moves for corresponding algorithms
-  const getMoves = async (Name) => {
+  const getMoves = async (Name: number) => {
     let moves = [];
     let array = await getKeysCopy(list, size);
     if (Name === 1) {
@@ -155,7 +155,7 @@ const Visualizer = () => {
   };
 
   // swapping the values for current move
-  const updateList = async (indexes) => {
+  const updateList = async (indexes: number[]) => {
     let array = [...list];
     let stored = array[indexes[0]].key;
     array[indexes[0]].key = array[indexes[1]].key;
@@ -164,7 +164,7 @@ const Visualizer = () => {
   };
 
   // update value of list element
-  const updateElementValue = async (indexes) => {
+  const updateElementValue = async (indexes: number[]) => {
     let array = [...list];
     array[indexes[0]].key = indexes[1];
     await updateStateChanges(array);
@@ -173,7 +173,6 @@ const Visualizer = () => {
   // update classType of list element
   const updateElementClass = async (indexes, classType) => {
     let array = [...list];
-    console.log("In updateElementClass", { indexes, classType });
 
     for (let i = 0; i < indexes.length; ++i) {
       array[indexes[i]].classType = classType;

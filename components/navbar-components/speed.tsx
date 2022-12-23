@@ -1,7 +1,12 @@
 import React from "react";
 
 // Speed list component
-const Speed = ({ onChange, speeds }) => {
+interface SpeedProps {
+  onChange: (value: string, speed: string) => void;
+  speeds: number[];
+}
+
+const Speed = ({ onChange, speeds }: SpeedProps) => {
   return (
     <span className="options">
       <select

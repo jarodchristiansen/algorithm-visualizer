@@ -1,7 +1,9 @@
-const pause = async (speed) => {
+const pause = async (speed: number) => {
+  
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve();
+
+      resolve('N/A');
     }, 450 / speed);
   });
 };

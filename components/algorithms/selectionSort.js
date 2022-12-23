@@ -1,20 +1,20 @@
-import {SWAP} from '../helper/constants.js';
-import {swap} from '../helper/swap.js';
+import { SWAP } from "../helper/constants";
+import { swap } from "../helper/swap";
 
 // selection sort returns container with 2 indexes and boolean
 // describing to swap or not
-export const selectionSort = async(array, length) => {
-    let moves = [];
-    for(let i = 0 ; i < length-1 ; ++i) {
-        let minIndex = i;
-        for(let j = i+1 ; j < length ; ++j) {
-            if(array[j] < array[minIndex]) {
-                minIndex = j;
-            }
-            moves.push([j, minIndex, !SWAP]);
-        }
-        await swap(array, i, minIndex);
-        moves.push([i, minIndex, SWAP]);
+export const selectionSort = async (array, length) => {
+  let moves = [];
+  for (let i = 0; i < length - 1; ++i) {
+    let minIndex = i;
+    for (let j = i + 1; j < length; ++j) {
+      if (array[j] < array[minIndex]) {
+        minIndex = j;
+      }
+      moves.push([j, minIndex, !SWAP]);
     }
-    return moves;
+    await swap(array, i, minIndex);
+    moves.push([i, minIndex, SWAP]);
+  }
+  return moves;
 };

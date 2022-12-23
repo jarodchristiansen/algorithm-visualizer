@@ -1,7 +1,18 @@
 import React from "react";
 
 // Algorithm list component
-const Algorithms = ({ algorithms, onChange }) => {
+
+interface AlgorithmsProps {
+  algorithms: Algorithm[];
+  onChange: (value: string, speed: string) => void;
+}
+
+export interface Algorithm {
+  value: number;
+  type: string;
+}
+
+const Algorithms = ({ algorithms, onChange }: AlgorithmsProps) => {
   return (
     <span className="options">
       <select

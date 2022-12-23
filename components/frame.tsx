@@ -16,6 +16,7 @@ const Frame = ({ list }) => {
         className={getClass(element.classType)}
         key={index}
         style={{ height: `${4 * element.key}px` }}
+        // @ts-ignore: TODO
         value={element.key}
       ></div>
     ));
