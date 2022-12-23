@@ -2,7 +2,7 @@ import { CHANGE_VALUE } from "../helper/constants";
 
 // merge sort returns container with index, value, boolean
 // and list of range
-export const mergeSort = async (array, length) => {
+export const mergeSort = async (array: number[], length: number) => {
   let moves = [];
   await divide(array, moves, 0, length - 1);
   return moves;

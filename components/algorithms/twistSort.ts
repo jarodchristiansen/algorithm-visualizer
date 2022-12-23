@@ -7,7 +7,7 @@ import { merge } from "./mergeSort";
 // and list of range
 // 2. It returns container with 2 indexes and boolean
 // describing to swap or not
-export const twistSort = async (array, length) => {
+export const twistSort = async (array: number[], length: number) => {
   let moves = [];
   await divider(moves, array, 0, length - 1);
   return moves;

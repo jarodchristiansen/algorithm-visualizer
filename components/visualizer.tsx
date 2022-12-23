@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 // algorithms
-import { bubbleSort } from "./algorithms/bubbleSort.js";
-import { insertionSort } from "./algorithms/insertionSort.js";
-import { selectionSort } from "./algorithms/selectionSort.js";
-import { mergeSort } from "./algorithms/mergeSort.js";
-import { quickSort } from "./algorithms/quickSort.js";
-import { heapSort } from "./algorithms/heapSort.js";
-import { twistSort } from "./algorithms/twistSort.js";
+import { bubbleSort } from "./algorithms/bubbleSort";
+import { insertionSort } from "./algorithms/insertionSort";
+import { selectionSort } from "./algorithms/selectionSort";
+import { mergeSort } from "./algorithms/mergeSort";
+import { quickSort } from "./algorithms/quickSort";
+import { heapSort } from "./algorithms/heapSort";
+import { twistSort } from "./algorithms/twistSort";
 
 // components
 import Navbar from "./navbar";

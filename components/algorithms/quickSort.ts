@@ -3,7 +3,7 @@ import { swap } from "../helper/swap";
 
 // quick sort returns container with 2 indexes and boolean
 // describing to swap or not
-export const quickSort = async (array, length) => {
+export const quickSort = async (array: number[], length: number) => {
   let moves = [];
   await divider(moves, array, 0, length - 1);
   return moves;

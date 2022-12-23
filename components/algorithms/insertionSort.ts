@@ -3,7 +3,7 @@ import { swap } from "../helper/swap";
 
 // insertion sort returns container with 2 indexes and boolean
 // describing to swap or not
-export const insertionSort = async (array, length) => {
+export const insertionSort = async (array: number[], length: number) => {
   let moves = [];
   for (let i = 0; i < length - 1; ++i) {
     let j = i;
