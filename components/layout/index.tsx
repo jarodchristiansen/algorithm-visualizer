@@ -1,3 +1,9 @@
+import Link from "next/link";
+import HeaderBar from "./headerBar";
+
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 .App {
@@ -13,19 +19,10 @@ html, body {
   font-family: 'Fira Code', monospace;
   flex-direction: column;
 }
-footer {
-  bottom: 20px !important;
-  margin-top: auto;
-  text-align: center;
-  position: relative;
-}
-.link {
-  text-decoration: none;
-  font-weight: bold;
-  color: #FF5252;
-}
 
-/* FRAME STARTS */
+
+
+/* FRAME STARTS. GLOBAL TO HANDLE DIFFERENT VISUALIZERS*/
 .array {
   padding: 1rem;
   display: flex;
@@ -132,4 +129,16 @@ button:hover {
     display: inline;
   }
 }
-/* NAVBAR ENDS */
+`;
+
+const Layout = ({ children }) => {
+  return (
+    <div>
+      <GlobalStyle />
+      <HeaderBar />
+      {children}
+    </div>
+  );
+};
+
+export default Layout;

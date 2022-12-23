@@ -4,7 +4,7 @@ import Algorithms from "./navbar-components/algorithms";
 import Size from "./navbar-components/size";
 import Speed from "./navbar-components/speed";
 
-const Navbar = ({ newList, response, onChange, start }) => {
+const SortingNavbar = ({ newList, response, onChange, start }) => {
   let [algorithms, setAlgorithms] = useState([
     { value: 1, type: "Bubble Sort" },
     { value: 2, type: "Selection Sort" },
@@ -43,4 +43,4 @@ const Navbar = ({ newList, response, onChange, start }) => {
   );
 };
 
-export default Navbar;
+export default SortingNavbar;

@@ -18,7 +18,9 @@ const Frame = ({ list }) => {
         style={{ height: `${4 * element.key}px` }}
         // @ts-ignore: TODO
         value={element.key}
-      ></div>
+      >
+        <span>{element.key}</span>
+      </div>
     ));
   }, [list]);
 
