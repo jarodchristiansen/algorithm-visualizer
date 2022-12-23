@@ -10,7 +10,7 @@ import { heapSort } from "./algorithms/heapSort";
 import { twistSort } from "./algorithms/twistSort";
 
 // components
-import Navbar from "./navbar";
+import Navbar from "./sorting-navbar";
 import Frame from "./frame";
 
 // helpers
@@ -26,8 +26,9 @@ import {
   DONE,
 } from "./helper/constants";
 import { getKeysCopy } from "./helper/keys";
+import SortingNavbar from "./sorting-navbar";
 
-const Visualizer = () => {
+const SortingVisualizer = () => {
   /*  each element in the list contains a <key, classType> where:
         key - integer value of element,
         classType - css class for changing color of element
@@ -216,7 +217,7 @@ const Visualizer = () => {
 
   return (
     <React.Fragment>
-      <Navbar
+      <SortingNavbar
         start={start}
         response={response}
         newList={generateList}
@@ -227,4 +228,4 @@ const Visualizer = () => {
   );
 };
 
-export default Visualizer;
+export default SortingVisualizer;

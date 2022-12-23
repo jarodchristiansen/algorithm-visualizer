@@ -43,8 +43,8 @@ footer {
   transition: all .4s ease-in;
 }
 .cell.done {
-  background-color: #9CEC5B;
-  border-color: #9CEC5B;
+  background-color: #8bb88e;
+  border-color: #8bb88e;
   transition: all .4s ease-out;
 }
 .cell.current {

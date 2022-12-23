@@ -1,10 +1,9 @@
-import Visualizer from "../../components/visualizer";
-import styles from "../../styles/SortPage.module.css";
+import SortingVisualizer from "../../components/sortingvisualizer";
 
 const SortingPage = () => {
   return (
     <div>
-      <Visualizer />
+      <SortingVisualizer />
     </div>
   );
 };
