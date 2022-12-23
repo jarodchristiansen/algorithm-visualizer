@@ -3,7 +3,8 @@ import { swap } from "../helper/swap";
 
 // bubble sort returns container with 2 indexes and boolean
 // describing to swap or not
-export const bubbleSort = async (array, length) => {
+export const bubbleSort = async (array: number[], length: number) => {
+
   let moves = [];
   for (let i = 0; i < length - 1; ++i) {
     for (let j = 0; j < length - i - 1; ++j) {

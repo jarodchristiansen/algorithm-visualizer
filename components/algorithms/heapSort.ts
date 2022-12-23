@@ -3,7 +3,7 @@ import { swap } from "../helper/swap";
 
 // heap sort returns container with 2 indexes and boolean
 // describing to swap or not
-export const heapSort = async (array, length) => {
+export const heapSort = async (array: number[], length: number) => {
   let moves = [];
   for (let index = Math.ceil(length / 2) - 1; index >= 0; --index) {
     await heapify(moves, array, length, index);
