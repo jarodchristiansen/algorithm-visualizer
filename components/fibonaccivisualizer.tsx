@@ -101,6 +101,7 @@ const FibonacciVisualizer = () => {
 
   const visualizeMovesInRange = async (moves) => {
     let prevRange = [];
+
     while (moves.length > 0 && moves[0].length === 3) {
       if (prevRange !== moves[0]) {
         //Need to convert the value sent in to match the index in relation to the fib val being compared
@@ -118,10 +119,8 @@ const FibonacciVisualizer = () => {
   };
 
   const vizualizeFinalMove = async (moves) => {
-    console.log("vizualizeFinalMove", { moves });
-
+    // console.log("vizualizeFinalMove", { moves });
     // while (moves.length > 0) {
-
     // let currMove = moves[0];
     // // if container doesn't contains 3 elements then return
     // if (currMove.length !== 3) {
@@ -197,7 +196,11 @@ const FibonacciVisualizer = () => {
     for (let i = 0; i < indexes.length; i++) {
       // console.log({ array, indexes, i, classType }, "in updateElementClass");
 
-      array[indexes[i]].classType = classType;
+      array[i].classType = classType;
+
+      console.log("In element class update", { array, i }, array[i]);
+
+      // array[indexes[i]].classType = classType;
     }
 
     await updateStateChanges(array);
