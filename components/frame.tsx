@@ -15,7 +15,7 @@ const Frame = ({ list }) => {
       <div
         className={getClass(element.classType)}
         key={index}
-        style={{ height: `${4 * element.key}px` }}
+        style={{ height: `${3 * element.key}px` }}
         // @ts-ignore: TODO
         value={element.key}
       >
