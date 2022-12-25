@@ -7,6 +7,8 @@ export const fibonacci = async (array: number[], length: number) => {
   // let moves = [[0, 1, 1], [1, 1, 2]]
   let moves = []
   
+  console.log({array})
+
   for (let i = 0; i<length - 1; i++) {
 
     moves = [...moves, [array[i], array[i+1], array[i] + array[i+1]]]

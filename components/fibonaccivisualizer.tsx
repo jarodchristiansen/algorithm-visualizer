@@ -108,8 +108,6 @@ const FibonacciVisualizer = () => {
         await updateElementClass(prevRange, NORMAL);
         prevRange = moves[0];
 
-        console.log({ prevRange }, "In visualizeMovesInRange!!");
-
         await updateElementClass(moves[0], CURRENT);
       }
       // await updateElementValue([moves[0][0], moves[0][1]]);
@@ -194,13 +192,9 @@ const FibonacciVisualizer = () => {
     let array = [...list];
 
     for (let i = 0; i < indexes.length; i++) {
-      // console.log({ array, indexes, i, classType }, "in updateElementClass");
-
-      array[i].classType = classType;
-
-      console.log("In element class update", { array, i }, array[i]);
-
-      // array[indexes[i]].classType = classType;
+      array
+        .filter((item) => item.key === indexes[i])
+        .forEach((item) => (item.classType = classType));
     }
 
     await updateStateChanges(array);
@@ -223,9 +217,13 @@ const FibonacciVisualizer = () => {
   // Mark list as done
   const done = async () => {
     let indexes = [];
-    for (let i = 0; i < size; ++i) {
-      indexes.push(i);
+
+    console.log({ list, size }, "In done");
+
+    for (let i of list) {
+      indexes.push(i.key);
     }
+
     await updateElementClass(indexes, DONE);
   };
 
