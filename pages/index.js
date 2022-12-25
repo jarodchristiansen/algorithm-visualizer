@@ -75,6 +75,7 @@ const AlgoColumn = styled.div`
     padding: 1rem;
     gap: 0.5rem;
     color: black;
+    box-shadow: 2px 4px 8px lightgray;
 
     :hover {
       color: blue;

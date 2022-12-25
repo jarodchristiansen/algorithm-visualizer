@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo } from "react";
+import styled from "styled-components";
 
 // Frame Component for rendering list
 const Frame = ({ list }) => {
@@ -12,15 +13,15 @@ const Frame = ({ list }) => {
     if (!list.length) return [];
 
     return list.map((element, index) => (
-      <div
+      <FrameBar
         className={getClass(element.classType)}
         key={index}
-        style={{ height: `${4 * element.key}px` }}
+        style={{ height: `${3 * element.key}px` }}
         // @ts-ignore: TODO
         value={element.key}
       >
         <span>{element.key}</span>
-      </div>
+      </FrameBar>
     ));
   }, [list]);
 
@@ -30,5 +31,11 @@ const Frame = ({ list }) => {
     </div>
   );
 };
+
+const FrameBar = styled.div`
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+`;
 
 export default Frame;

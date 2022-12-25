@@ -16,5 +16,7 @@ export const bubbleSort = async (array: number[], length: number) => {
       }
     }
   }
+
+
   return moves;
 };
