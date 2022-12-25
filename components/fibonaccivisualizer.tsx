@@ -5,22 +5,20 @@ import Frame from "./frame";
 
 // helpers
 import pause from "./helper/pause";
-import generator from "./helper/generator";
 import {
   ALGORITHM,
   SPEED,
   SIZE,
-  SWAP,
   CURRENT,
   NORMAL,
   DONE,
 } from "./helper/constants";
 import { getKeysCopy } from "./helper/keys";
-import SortingNavbar from "./sorting-navbar";
 import FibonacciNavbar from "./fibonacci-navbar";
 import fibonacciGenerator from "./helper/fibonaccigenerator";
 import { fibonacci } from "./algorithms/fibonacci";
 import styled from "styled-components";
+import { numberWithCommas } from "./helper/formatters/thousands";
 
 const FibonacciVisualizer = () => {
   /*  each element in the list contains a <key, classType> where:
@@ -33,6 +31,10 @@ const FibonacciVisualizer = () => {
   const [speed, setSpeed] = useState(1);
   const [algorithm, setAlgorithm] = useState(1);
   const [running, setRunning] = useState(false);
+
+  const [firstSumValue, setFirstSumValue] = useState(0);
+  const [secondSumValue, setSecondSumValue] = useState(1);
+  const [sumValue, setSumValue] = useState(1);
 
   useEffect(() => {
     generateList();
@@ -108,6 +110,10 @@ const FibonacciVisualizer = () => {
         await updateElementClass(prevRange, NORMAL);
         prevRange = moves[0];
 
+        setFirstSumValue(moves[0][0]);
+        setSecondSumValue(moves[0][1]);
+        setSumValue(moves[0][2]);
+
         await updateElementClass(moves[0], CURRENT);
       }
       // await updateElementValue([moves[0][0], moves[0][1]]);
@@ -155,43 +161,11 @@ const FibonacciVisualizer = () => {
   //     }
   //   };
 
-  //   // for visualizing range based sorting algorithms
-  //   const visualizeMovesInRange = async (Moves) => {
-  //     let prevRange = [];
-  //     while (Moves.length > 0 && Moves[0].length === 4) {
-  //       // change range only when required to avoid blinking
-  //       if (prevRange !== Moves[0][3]) {
-  //         await updateElementClass(prevRange, NORMAL);
-  //         prevRange = Moves[0][3];
-  //         await updateElementClass(Moves[0][3], CURRENT);
-  //       }
-  //       await updateElementValue([Moves[0][0], Moves[0][1]]);
-  //       Moves.shift();
-  //     }
-  //     await visualizeMoves(Moves);
-  //   };
-
-  // swapping the values for current move
-  const updateList = async (indexes: number[]) => {
-    let array = [...list];
-    let stored = array[indexes[0]].key;
-    array[indexes[0]].key = array[indexes[1]].key;
-    array[indexes[1]].key = stored;
-    await updateStateChanges(array);
-  };
-
-  // update value of list element
-  const updateElementValue = async (indexes: number[]) => {
-    let array = [...list];
-    array[indexes[0]].key = indexes[1];
-    await updateStateChanges(array);
-  };
-
   // update classType of list element
   const updateElementClass = async (indexes, classType) => {
     let array = [...list];
 
-    for (let i = 0; i < indexes.length; i++) {
+    for (let i = 0; i < indexes.length; ++i) {
       array
         .filter((item) => item.key === indexes[i])
         .forEach((item) => (item.classType = classType));
@@ -218,11 +192,13 @@ const FibonacciVisualizer = () => {
   const done = async () => {
     let indexes = [];
 
-    console.log({ list, size }, "In done");
-
     for (let i of list) {
       indexes.push(i.key);
     }
+
+    setFirstSumValue(0);
+    setSecondSumValue(1);
+    setSumValue(1);
 
     await updateElementClass(indexes, DONE);
   };
@@ -256,6 +232,14 @@ const FibonacciVisualizer = () => {
           value it represent. Adjust the middle dropdown above to expand the
           dataset.
         </span>
+
+        {!!firstSumValue && !!secondSumValue && !!sumValue && (
+          <div className="function-text">{`${numberWithCommas(
+            firstSumValue
+          )} + ${numberWithCommas(secondSumValue)} = ${numberWithCommas(
+            sumValue
+          )}`}</div>
+        )}
       </TextColumn>
 
       {list && <Frame list={list} />}
@@ -268,6 +252,14 @@ const TextColumn = styled.div`
   text-align: center;
   margin: auto;
   padding: 2rem 0;
+
+  .function-text {
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
+
+    padding: 2rem 0;
+  }
 `;
 
 export default FibonacciVisualizer;
